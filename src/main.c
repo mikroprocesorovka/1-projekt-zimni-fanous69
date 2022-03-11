@@ -53,15 +53,22 @@ int main(void)
 
 //získávání aktuální hodnoty z enkoderu
         present_value = TIM1_GetCounter();
+        present_value = present_value / 2;
 
-        if(present_value != previous_value)
+        if(present_value < 200 )
         {
-            lcd_gotoxy(0, 0);
-            sprintf(text,"regulace PWM %u ",present_value);
-            lcd_puts(text);
-            TIM2_SetCompare1(present_value);
+        
+            if(present_value != previous_value)
+            {
+                
+                lcd_gotoxy(0, 0);
+                sprintf(text,"regulace PWM %u ",present_value);
+                lcd_puts(text);
+                TIM2_SetCompare1(present_value);
+            }
+            previous_value = present_value;
         }
-        previous_value = present_value;
+
 
     }
 }
