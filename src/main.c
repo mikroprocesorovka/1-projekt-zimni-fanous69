@@ -55,8 +55,6 @@ int main(void)
         present_value = TIM1_GetCounter();
         present_value = present_value / 2;
 
-        if(present_value < 200 )
-        {
         
             if(present_value != previous_value)
             {
@@ -67,7 +65,7 @@ int main(void)
                 TIM2_SetCompare1(present_value);
             }
             previous_value = present_value;
-        }
+        
 
 
     }
